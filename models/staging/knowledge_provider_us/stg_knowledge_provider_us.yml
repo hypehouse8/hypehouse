@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: stg_comment_count
+    description: One comment per row?
+    columns: 
+      - name: video_id
+        description: the foreign key for video
+        tests:
+          - not_null
