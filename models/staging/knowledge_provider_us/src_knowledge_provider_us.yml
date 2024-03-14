@@ -6,33 +6,32 @@ sources:
       database: raw
       schema: knowledge_provider_us
       tables:
-          - name: comment_count_tab
+          - name: raw_comment_count_tab
             description: One record per comment.
             columns:
-            - name: video_id
-              description: The foreign key for video
+            - name: data_content
+              description: Raw data content for comment count
               tests:
                 - not_null
-          - name: likes_count_tab
+          - name: raw_likes_count_tab
             description: One record per likes and dislikes to video per day
             columns:
-            - name: video_id
-              description: The foreign key for video
+            - name: data_content
+              description: Raw data content for likes count 
               tests:
                 - not_null
-          - name: view_count_tab
-            description: One record per view counts to video per day
+          - name: raw_view_count_tab
+            description: One record per view count
             columns:
-            - name: video_id
-              description: The foreign key for video
+            - name: data_content
+              description: Raw data content for view count 
               tests:
                 - not_null
-          - name: video_info_tab
+          - name: raw_video_info_tab
             description: One record per video
             columns:
-            - name: video_id
-              description: The primary key for video
+            - name: data_content
+              description: Raw data content for video count
               tests:
                 - not_null
-                - unique
                 
