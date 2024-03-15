@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: stg_comment_count
+  - name: stg_comment_count_us
     description: One comment per row?
     columns:   
       - name: comment_count
@@ -15,7 +15,7 @@ models:
           - relationships:
               to: ref('stg_video_info')
               field: video_id     
-  - name: stg_likes_count
+  - name: stg_likes_count_us
     description: One row per like or dislikes count
     columns:
       - name: likes
@@ -29,7 +29,7 @@ models:
           - relationships:
               to: ref('stg_video_info')
               field: video_id 
-  - name: stg_view_count
+  - name: stg_view_count_us
     description: View count per row
     columns:  
       - name: view_count
@@ -43,7 +43,7 @@ models:
           - relationships:
               to: ref('stg_video_info')
               field: video_id 
-  - name: stg_video_info
+  - name: stg_video_info_us
     description: Video info per row?
     columns:  
       - name: video_id

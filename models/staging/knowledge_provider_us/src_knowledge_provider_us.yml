@@ -13,11 +13,19 @@ sources:
               description: Raw data content for comment count
               tests:
                 - not_null
+            - name: date_file
+              description: Date of arrival of the file
+              tests:
+                - not_null
           - name: raw_likes_count_tab
             description: One record per likes and dislikes to video per day
             columns:
             - name: data_content
               description: Raw data content for likes count 
+              tests:
+                - not_null
+            - name: date_file
+              description: Date of arrival of the file
               tests:
                 - not_null
           - name: raw_view_count_tab
@@ -27,11 +35,19 @@ sources:
               description: Raw data content for view count 
               tests:
                 - not_null
+            - name: date_file
+              description: Date of arrival of the file
+              tests:
+                - not_null
           - name: raw_video_info_tab
             description: One record per video
             columns:
             - name: data_content
               description: Raw data content for video count
+              tests:
+                - not_null
+            - name: date_file
+              description: Date of arrival of the file
               tests:
                 - not_null
                 
