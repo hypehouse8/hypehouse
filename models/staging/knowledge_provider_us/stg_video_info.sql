@@ -19,5 +19,6 @@ select
     , t.value:thumbnail_link_for_client_HyPeHoUsE::varchar as thumbnail_link
     , t.value:title_for_client_HyPeHoUsE::varchar as title
     , to_date(t.value:trending_date_for_client_HyPeHoUsE::varchar, 'YY.DD.MM') as trending_date
+    , sr.country as country_code
 
 from {{ source('knowledge_provider_us', 'raw_video_info_tab') }} sr, table(flatten(sr.$1,'data')) t

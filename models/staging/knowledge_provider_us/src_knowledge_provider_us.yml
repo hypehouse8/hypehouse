@@ -17,6 +17,10 @@ sources:
               description: Date of arrival of the file
               tests:
                 - not_null
+            - name: country
+              description: Country of the data
+              tests:
+                - not_null
           - name: raw_likes_count_tab
             description: One record per likes and dislikes to video per day
             columns:
@@ -26,6 +30,10 @@ sources:
                 - not_null
             - name: date_file
               description: Date of arrival of the file
+              tests:
+                - not_null
+            - name: country
+              description: Country of the data
               tests:
                 - not_null
           - name: raw_view_count_tab
@@ -39,6 +47,10 @@ sources:
               description: Date of arrival of the file
               tests:
                 - not_null
+            - name: country
+              description: Country of the data
+              tests:
+                - not_null
           - name: raw_video_info_tab
             description: One record per video
             columns:
@@ -48,6 +60,10 @@ sources:
                 - not_null
             - name: date_file
               description: Date of arrival of the file
+              tests:
+                - not_null
+            - name: country
+              description: Country of the data
               tests:
                 - not_null
                 

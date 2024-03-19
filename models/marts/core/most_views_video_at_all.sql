@@ -5,13 +5,6 @@ WITH video_info as (
         , category_id
         , channel_id
         , channel_title
-        , comments_disabled
-        , description
-        , garbled_1
-        , garbled_2
-        , garbled_3
-        , garbled_4
-        , garbled_5
         , published_at
         , ratings_disabled
         , tags
@@ -41,33 +34,24 @@ views as (
         , video_id
     FROM {{ ref('stg_view_count') }}
 ),
-all_info as (
+final as (
     SELECT 
-        video_info.date_file
-        , video_info.video_id
-        , category_id
-        , channel_id
-        , channel_title
-        , comments_disabled
-        , description
-        , garbled_1
-        , garbled_2
-        , garbled_3
-        , garbled_4
-        , garbled_5
-        , published_at
-        , ratings_disabled
-        , tags
-        , thumbnail_link
-        , title
-        , trending_date
-        , comment_count
-        , likes
-        , view_count
+        video_info.video_id
+        --, channel_id
+        --, channel_title
+        --, title
+        --, trending_date
+        --, category_id
+        , SUM(likes) AS summary_likes
+        , SUM(comment_count) AS summary_counts
+        , SUM(view_count) AS summary_views
+        
     FROM video_info
     LEFT JOIN comments ON video_info.video_id = comments.video_id AND video_info.date_file = comments.date_file
     LEFT JOIN likes ON video_info.video_id = likes.video_id AND video_info.date_file = likes.date_file
     LEFT JOIN views ON video_info.video_id = views.video_id AND video_info.date_file = views.date_file
+    GROUP BY video_info.video_id 
+    ORDER BY summary_views DESC
 )
 
-SELECT * FROM all_info
+SELECT * FROM final LIMIT 10
