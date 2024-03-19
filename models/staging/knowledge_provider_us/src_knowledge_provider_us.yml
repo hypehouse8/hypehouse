@@ -1,0 +1,69 @@
+version: 2
+
+sources:
+    - name: knowledge_provider_us
+      description: This is a replica of the Postgres database used by our app
+      database: raw
+      schema: knowledge_provider_us
+      tables:
+          - name: raw_comment_count_tab
+            description: One record per comment.
+            columns:
+            - name: data_content
+              description: Raw data content for comment count
+              tests:
+                - not_null
+            - name: date_file
+              description: Date of arrival of the file
+              tests:
+                - not_null
+            - name: country
+              description: Country of the data
+              tests:
+                - not_null
+          - name: raw_likes_count_tab
+            description: One record per likes and dislikes to video per day
+            columns:
+            - name: data_content
+              description: Raw data content for likes count 
+              tests:
+                - not_null
+            - name: date_file
+              description: Date of arrival of the file
+              tests:
+                - not_null
+            - name: country
+              description: Country of the data
+              tests:
+                - not_null
+          - name: raw_view_count_tab
+            description: One record per view count
+            columns:
+            - name: data_content
+              description: Raw data content for view count 
+              tests:
+                - not_null
+            - name: date_file
+              description: Date of arrival of the file
+              tests:
+                - not_null
+            - name: country
+              description: Country of the data
+              tests:
+                - not_null
+          - name: raw_video_info_tab
+            description: One record per video
+            columns:
+            - name: data_content
+              description: Raw data content for video count
+              tests:
+                - not_null
+            - name: date_file
+              description: Date of arrival of the file
+              tests:
+                - not_null
+            - name: country
+              description: Country of the data
+              tests:
+                - not_null
+                

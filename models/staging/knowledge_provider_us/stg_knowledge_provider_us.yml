@@ -1,0 +1,52 @@
+version: 2
+
+models:
+  - name: stg_comment_count
+    description: One comment per row?
+    columns:   
+      - name: comment_count
+        description: Comment count
+        tests:
+          - not_null
+      - name: video_id
+        description: the foreign key for video
+        tests:
+          - not_null 
+          - relationships:
+              to: ref('stg_video_info')
+              field: video_id     
+  - name: stg_likes_count
+    description: One row per like or dislikes count
+    columns:
+      - name: likes
+        description: Number of likes
+        tests:
+          - not_null
+      - name: video_id
+        description: the foreign key for video
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_video_info')
+              field: video_id 
+  - name: stg_view_count
+    description: View count per row
+    columns:  
+      - name: view_count
+        description: View count
+        tests:
+          - not_null
+      - name: video_id
+        description: the foreign key for video
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_video_info')
+              field: video_id 
+  - name: stg_video_info
+    description: Video info per row?
+    columns:  
+      - name: video_id
+        description: the primary key
+        tests:
+          - not_null
