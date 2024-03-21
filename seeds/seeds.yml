@@ -1,0 +1,27 @@
+version: 2
+
+seeds:
+  - name: countries
+    description: Mannual country map table for country names 
+    columns: 
+      - name: country_code
+        description: The primary key (country codes)
+        tests:
+          - unique
+          - not_null
+      - name: country_name
+        description: The name of country
+        tests:
+          - not_null
+  - name: video_categories
+    description: Mannual video category map table for categories names 
+    columns: 
+      - name: category_id
+        description: The primary key
+        tests:
+          - unique
+          - not_null
+      - name: category_title
+        description: The name of category
+        tests:
+          - not_null

@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: avg_trending_days_from_publish
+    description: "{{ doc('avg_trending_days_from_publish') }}"
