@@ -1,5 +1,5 @@
 {% docs avg_trending_days_from_publish %}
 
-This model gives average days to trneding from published day
+How many days, on average, it takes for a video to trend after its published date
  
 {% enddocs %}

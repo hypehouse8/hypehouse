@@ -74,3 +74,9 @@ models:
         description: the primary key
         tests:
           - not_null
+      - name: category_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('video_categories')
+              field: category_id

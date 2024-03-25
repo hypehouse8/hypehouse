@@ -20,7 +20,7 @@ categories as (
     select * from {{ ref('video_categories') }}
 ),
 catogories_views as (
-    select category_title
+    select COALESCE(category_title, 'Unknown') as category_title
     , AVG(view_count) as average_views
     from video_views
     left join categories on video_views.category_id = categories.category_id

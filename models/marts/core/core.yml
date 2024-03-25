@@ -3,3 +3,13 @@ version: 2
 models:
   - name: avg_trending_days_from_publish
     description: "{{ doc('avg_trending_days_from_publish') }}"
+  - name: category_views
+    description: Average number of views for each category name
+  - name: most_viewed_category_in_country
+    description: The most viewed category in each country
+  - name: most_views_country
+    description: Countries with the highest views
+  - name: most_views_video_at_all
+    description: 10 top video with the highest number of views
+  - name: trending_video_per_channel
+    description: "{{ doc('trending_video_per_channel') }}"

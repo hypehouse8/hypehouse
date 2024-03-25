@@ -21,6 +21,9 @@ seeds:
         tests:
           - unique
           - not_null
+          - relationships:
+              field: category_id
+              to: ref('stg_video_info')
       - name: category_title
         description: The name of category
         tests:
