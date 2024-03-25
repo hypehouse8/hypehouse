@@ -16,11 +16,15 @@ video_views as (
     on video_info.video_id = views.video_id and video_info.date_file = views.date_file
 ),
 
+categories as (
+    select * from {{ ref('video_categories') }}
+),
 catogories_views as (
-    select category_id
+    select COALESCE(category_title, 'Unknown') as category_title
     , AVG(view_count) as average_views
     from video_views
-    group by category_id
+    left join categories on video_views.category_id = categories.category_id
+    group by category_title
     ORDER BY average_views DESC
 )
 

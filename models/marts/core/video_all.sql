@@ -18,6 +18,7 @@ WITH video_info as (
         , thumbnail_link
         , title
         , trending_date
+        , country_code
     FROM {{ ref('stg_video_info') }}
 ),
 comments as (
@@ -25,6 +26,7 @@ comments as (
         date_file
         , comment_count
         , video_id
+        ,country_code
     FROM {{ ref('stg_comment_count') }}
 ), 
 likes as (
@@ -32,6 +34,7 @@ likes as (
         date_file
         , likes
         , video_id
+        , country_code
     FROM {{ ref('stg_likes_count') }}
 ),
 views as (
@@ -39,6 +42,7 @@ views as (
         date_file
         , view_count
         , video_id
+        , country_code
     FROM {{ ref('stg_view_count') }}
 ),
 all_info as (
@@ -65,9 +69,9 @@ all_info as (
         , likes
         , view_count
     FROM video_info
-    LEFT JOIN comments ON video_info.video_id = comments.video_id AND video_info.date_file = comments.date_file
-    LEFT JOIN likes ON video_info.video_id = likes.video_id AND video_info.date_file = likes.date_file
-    LEFT JOIN views ON video_info.video_id = views.video_id AND video_info.date_file = views.date_file
+    LEFT JOIN comments ON video_info.video_id = comments.video_id AND video_info.date_file = comments.date_file AND video_info.country_code = comments.country_code
+    LEFT JOIN likes ON video_info.video_id = likes.video_id AND video_info.date_file = likes.date_file AND video_info.country_code = likes.country_code
+    LEFT JOIN views ON video_info.video_id = views.video_id AND video_info.date_file = views.date_file AND video_info.country_code = views.country_code
 )
 
 SELECT * FROM all_info

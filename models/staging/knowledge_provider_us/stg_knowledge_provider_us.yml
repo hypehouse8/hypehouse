@@ -3,6 +3,12 @@ version: 2
 models:
   - name: stg_comment_count
     description: One comment per row?
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - video_id
+            - country_code
+            - date_file
     columns:   
       - name: comment_count
         description: Comment count
@@ -17,6 +23,12 @@ models:
               field: video_id     
   - name: stg_likes_count
     description: One row per like or dislikes count
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - video_id
+            - country_code
+            - date_file
     columns:
       - name: likes
         description: Number of likes
@@ -31,6 +43,12 @@ models:
               field: video_id 
   - name: stg_view_count
     description: View count per row
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - video_id
+            - country_code
+            - date_file
     columns:  
       - name: view_count
         description: View count
@@ -45,8 +63,20 @@ models:
               field: video_id 
   - name: stg_video_info
     description: Video info per row?
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - video_id
+            - country_code
+            - date_file
     columns:  
       - name: video_id
         description: the primary key
         tests:
           - not_null
+      - name: category_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('video_categories')
+              field: category_id
