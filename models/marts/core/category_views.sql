@@ -13,7 +13,7 @@ video_views as (
     , views.view_count as view_count
     from video_info
     inner join views 
-    on video_info.video_id = views.video_id and video_info.date_file = views.date_file
+    on video_info.video_id = views.video_id and video_info.date_file = views.date_file and video_info.country_code = views.country_code
 ),
 
 categories as (
