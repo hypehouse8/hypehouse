@@ -4,10 +4,18 @@ with video_info as (
     from {{ ref('stg_video_info') }}
 ),
 
-video_trend_time as (
+countries as (
     select *
-    , DATEDIFF(day, published_at, trending_date) as days_from_publish_to_trend
+    from {{ ref('countries') }}
+),
+
+video_trend_time as (
+    select countries.country_name
+    , AVG(DATEDIFF(day, published_at, trending_date)) as avg_days_from_published_to_trend
     from video_info
+    join countries on video_info.country_code = countries.country_code
+    group by countries.country_name
+    order by avg_days_from_published_to_trend
 )
 
-select AVG(days_from_publish_to_trend) as avg_days_from_published_to_trend from video_trend_time
+select * from video_trend_time
