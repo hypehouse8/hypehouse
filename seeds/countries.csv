@@ -1,12 +1,12 @@
-country_code, country_name
-US, United States
-GB, United Kingdom
-IN, India
-DE, Germany
-CA, Canada
-FR, France
-KR, South Korea
-RU, Russia
-JP, Japan
-BR, Brazil
-MX, Mexico
+country_code, country_name, continent
+US, United States, non-EU
+GB, United Kingdom, EU
+IN, India, non-EU
+DE, Germany, EU
+CA, Canada, non-EU
+FR, France, EU
+KR, South Korea, non-EU
+RU, Russia, EU
+JP, Japan, non-EU
+BR, Brazil, non-EU
+MX, Mexico, non-EU
