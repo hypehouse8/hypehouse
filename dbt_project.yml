@@ -39,6 +39,8 @@ models:
   hype_house:
     marts:
       +materialized: table
+      +post-hook:
+        - "{{ apply_row_access_policy() }}"
     intermediate: 
       +materialized: view
     staging:
