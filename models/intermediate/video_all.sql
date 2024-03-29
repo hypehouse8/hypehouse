@@ -74,6 +74,7 @@ all_info as (
         , likes
         , view_count
         , countries.country_name
+        , (0.9*likes + 0.75*view_count + comment_count)/3 as video_popular_grade
     FROM video_info
     LEFT JOIN comments 
         ON video_info.video_id = comments.video_id 
