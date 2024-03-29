@@ -8,11 +8,6 @@ select
     , t.value:comments_disabled_for_client_HyPeHoUsE::boolean as comments_disabled
     , t.value:description_for_client_HyPeHoUsE::varchar as description
     --, DATA_CONTENT:dislikes_for_client_HyPeHoUsE::number as dislikes
-    , t.value:garbled_1_for_client_HyPeHoUsE::varchar as garbled_1
-    , t.value:garbled_2_for_client_HyPeHoUsE::varchar as garbled_2
-    , t.value:garbled_3_for_client_HyPeHoUsE::varchar as garbled_3
-    , t.value:garbled_4_for_client_HyPeHoUsE::varchar as garbled_4
-    , t.value:garbled_5_for_client_HyPeHoUsE::varchar as garbled_5
     , t.value:publishedAt_for_client_HyPeHoUsE::timestamp_tz as published_at
     , t.value:ratings_disabled_for_client_HyPeHoUsE::boolean as ratings_disabled
     , t.value:tags_for_client_HyPeHoUsE::varchar as tags

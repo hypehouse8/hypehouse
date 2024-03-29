@@ -1,14 +1,19 @@
-with video_info as (
-    select *
-    from {{ ref('stg_video_info') }}
+with video_info_all as (
+    select 
+        channel_title
+        , country_name
+        , video_id
+    from {{ ref('video_all') }}
 ),
 
 final as (
-    select channel_title
-    , count(*) as number_of_trending_videos
-    from video_info
-    group by channel_title
-    order by number_of_trending_videos desc
+    select 
+        country_name
+        , channel_title
+        , count(*) as number_of_trending_videos
+    from video_info_all
+    group by country_name, channel_title
+    order by country_name
 )
 
 select * from final
