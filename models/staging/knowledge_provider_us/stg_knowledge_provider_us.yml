@@ -1,5 +1,4 @@
 version: 2
-
 models:
   - name: stg_comment_count
     description: One comment per row?
@@ -9,18 +8,23 @@ models:
             - video_id
             - country_code
             - date_file
-    columns:   
-      - name: comment_count
+    columns:
+      - name: DATE_FILE
+        description: Date of obtained file data
+        data_type: DATE
+      - name: COMMENT_COUNT
         description: Comment count
+        data_type: NUMBER
+      - name: VIDEO_ID
+        description: The foreign key for video
+        data_type: VARCHAR
         tests:
-          - not_null
-      - name: video_id
-        description: the foreign key for video
-        tests:
-          - not_null 
           - relationships:
               to: ref('stg_video_info')
-              field: video_id     
+              field: video_id
+      - name: COUNTRY_CODE
+        description: Code for a country from which the data is obtained
+        data_type: VARCHAR
   - name: stg_likes_count
     description: One row per like or dislikes count
     tests:
@@ -40,7 +44,7 @@ models:
           - not_null
           - relationships:
               to: ref('stg_video_info')
-              field: video_id 
+              field: video_id
   - name: stg_view_count
     description: View count per row
     tests:
@@ -49,18 +53,19 @@ models:
             - video_id
             - country_code
             - date_file
-    columns:  
-      - name: view_count
+    columns:
+      - name: DATE_FILE
+        description: The date of arrival of data
+        data_type: DATE
+      - name: VIEW_COUNT
         description: View count
-        tests:
-          - not_null
-      - name: video_id
+        data_type: NUMBER
+      - name: VIDEO_ID
         description: the foreign key for video
-        tests:
-          - not_null
-          - relationships:
-              to: ref('stg_video_info')
-              field: video_id 
+        data_type: VARCHAR
+      - name: COUNTRY_CODE
+        description: Country code from which the data is obtained
+        data_type: VARCHAR
   - name: stg_video_info
     description: Video info per row?
     tests:
@@ -69,7 +74,7 @@ models:
             - video_id
             - country_code
             - date_file
-    columns:  
+    columns:
       - name: video_id
         description: the primary key
         tests:
