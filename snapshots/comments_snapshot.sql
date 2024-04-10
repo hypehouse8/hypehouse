@@ -3,7 +3,7 @@
 {{
     config(
       target_database='dev',
-      target_schema='snapshots',
+      target_schema='dbt_hh8',
       unique_key='id',
 
       strategy='timestamp',
