@@ -16,4 +16,4 @@ select
     , to_date(t.value:trending_date_for_client_HyPeHoUsE::varchar, 'YY.DD.MM') as trending_date
     , SUBSTRING(sr.file_name,12,2) as country_code
 
-from {{ source('knowledge_provider_us', 'raw_video_info_tab') }} sr, table(flatten(sr.$1,'data')) t
+from {{ source('hypehouse', 'video_info_raw') }} sr, table(flatten(sr.$1,'data')) t
