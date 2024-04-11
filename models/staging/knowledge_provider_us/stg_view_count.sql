@@ -6,4 +6,4 @@ select
     
     --, DATA_CONTENT:index::int as index_view
 
-FROM {{ source('knowledge_provider_us', 'raw_view_count_tab') }} sr, table(flatten(sr.$1,'data')) t
+FROM {{ source('hypehouse', 'view_count_raw') }} sr, table(flatten(sr.$1,'data')) t
